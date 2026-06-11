@@ -532,3 +532,50 @@
     document.body.style.opacity = '1';
   });
 })();
+
+// ================= EMAILJS CONTACT FORM =================
+
+emailjs.init("YOUR_PUBLIC_KEY");
+
+document.getElementById("contact-form")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const btnText = document.getElementById("btn-text");
+    const formMsg = document.getElementById("form-msg");
+
+    btnText.textContent = "Sending...";
+
+    emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+            time: new Date().toLocaleString()
+        }
+    )
+    .then(function() {
+
+        formMsg.textContent = "✅ Message sent successfully!";
+        formMsg.style.color = "#22c55e";
+
+        document.getElementById("contact-form").reset();
+
+        btnText.textContent = "Send Message";
+
+    })
+    .catch(function(error) {
+
+        console.error(error);
+
+        formMsg.textContent = "❌ Failed to send message.";
+        formMsg.style.color = "#ef4444";
+
+        btnText.textContent = "Send Message";
+
+    });
+
+});
