@@ -535,7 +535,7 @@
 
 // ================= EMAILJS CONTACT FORM =================
 
-emailjs.init("YOUR_PUBLIC_KEY");
+emailjs.init("emZYlATqXYqjr9o0y");
 
 document.getElementById("contact-form")
 .addEventListener("submit", function(e) {
@@ -548,8 +548,8 @@ document.getElementById("contact-form")
     btnText.textContent = "Sending...";
 
     emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "portfolio_response",
+        "template_zdhmplm",
         {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
